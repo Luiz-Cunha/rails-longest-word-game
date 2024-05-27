@@ -1,0 +1,16 @@
+<%  url = "https://dictionary.lewagon.com//#{@word}" %>
+<% user_serialized = URI.open(url).read %>
+<% json_instance = JSON.parse(user_serialized) %>
+<% grid_downcase = @letters.map { |element| element.downcase }%>
+<% all_letters_in_grid = @word.chars.all? { |letter| grid_downcase.include?(letter) }%>
+
+<div class="d-flex justify-content-center">
+   <div>
+    <% if json_instance["found"] && all_letters_in_grid %>
+      <h1>CONGRATULATIONS!</h1>
+    <% else %>
+      <h1>not an english word</h1>
+    <% end %>
+    <%= link_to 'Play again!', 'new' %>
+  </div>
+</div>

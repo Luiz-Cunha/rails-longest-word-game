@@ -1,0 +1,13 @@
+<div class="d-flex justify-content-center">
+   <div>
+      <h1 class="text-center pb-5">New Game</h1>
+      <% @letters.each do |item| %>
+        <button type="button" class="btn btn-primary pr-20 "><%= item %></button>
+      <% end %>
+      <form action="/score" method="post" data-turbo="false" class="input-group mb-3 mt-3">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <input type="text" name="word" class="form-control">
+        <input type="submit" value="Play" class='btn btn-outline-secondary'>
+      </form>
+  </div>
+</div>
